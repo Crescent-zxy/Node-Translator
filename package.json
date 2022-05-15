@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "trans": "ts-node-dev src/cli.ts"
+    "start": "ts-node-dev src/cli.ts"
   },
   "keywords": [],
   "author": "",

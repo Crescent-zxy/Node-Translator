@@ -6,7 +6,7 @@ const program = new commander.Command();
 
 program
   .version(pkg.version)
-  .name("trans")
+  .name("translator")
   .usage("<English>")
   .arguments("<English>")
   .action((word) => {
