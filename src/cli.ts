@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { translate } from "./main";
 import * as commander from "commander";
 const pkg = require("../package.json");

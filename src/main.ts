@@ -3,7 +3,11 @@ import * as querystring from "querystring";
 import { appid, appSecret } from "./private";
 const md5 = require("md5");
 
-const errorMap = {
+type ErrorMap = {
+  [k: string]: string;
+};
+
+const errorMap: ErrorMap = {
   52000: "成功",
   52001: "请求超时 ",
   52002: "系统错误 ",
@@ -19,7 +23,7 @@ const errorMap = {
   90107: "认证未通过或未生效",
 };
 
-export const translate = (word) => {
+export const translate = (word: string) => {
   const salt = Math.random();
   const sign = md5(appid + word + salt + appSecret);
 
@@ -42,7 +46,7 @@ export const translate = (word) => {
   };
 
   const request = https.request(options, (response) => {
-    const chunks = [];
+    const chunks: Buffer[] = [];
     response.on("data", (chunk) => {
       chunks.push(chunk);
     });
@@ -53,7 +57,7 @@ export const translate = (word) => {
         error_msg?: string;
         from?: string;
         to?: string;
-        trans_result?: { src: string; dst: string }[];
+        trans_result: { src: string; dst: string }[];
       };
       const object: BaiduResult = JSON.parse(string);
       if (object.error_code) {
